@@ -27,7 +27,7 @@ case "$1" in
         stop_all ${@:2}
     ;;
 
-	"logs" )
+    "logs" )
         start_logs ${@:2}
     ;;
 
