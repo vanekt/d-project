@@ -14,14 +14,22 @@ function stop_all {
 	docker-compose down ${opts}
 }
 
+function start_logs {
+    docker-compose logs -f --tail=300 ${@:1}
+}
+
 case "$1" in
-	"--up" )
+	"up" )
 		start_app
 	;;
 
-	"--down" )
+	"down" )
 		stop_all ${@:2}
 	;;
+
+	"logs" )
+        start_logs ${@:2}
+    ;;
 
 	* )
 		docker-compose ${@:1}
