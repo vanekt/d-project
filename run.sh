@@ -3,15 +3,15 @@
 set -e
 
 function start_app {
-	docker-compose up -d
+    docker-compose up -d
 }
 
 function stop_all {
-	opts=""
-	if [[ "$1" == "--volumes" ]]; then
-		opts="-v"
-	fi
-	docker-compose down ${opts}
+    opts=""
+    if [[ "$1" == "--volumes" ]]; then
+	    opts="-v"
+    fi
+    docker-compose down ${opts}
 }
 
 function start_logs {
@@ -19,19 +19,19 @@ function start_logs {
 }
 
 case "$1" in
-	"up" )
-		start_app
-	;;
+    "up" )
+	    start_app
+    ;;
 
-	"down" )
-		stop_all ${@:2}
-	;;
+    "down" )
+        stop_all ${@:2}
+    ;;
 
 	"logs" )
         start_logs ${@:2}
     ;;
 
-	* )
-		docker-compose ${@:1}
-	;;
+    * )
+        docker-compose ${@:1}
+    ;;
 esac
