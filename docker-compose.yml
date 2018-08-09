@@ -3,12 +3,12 @@ services:
   api:
     image: golang:1.10.3
     restart: always
-    working_dir: /go/src/app
+    working_dir: /go/src/vanekt/dental-api
     entrypoint: /usr/bin/run.sh
     volumes:
       - ./api/run.sh:/usr/bin/run.sh:ro
       - ${GOPATH}/src:/go/src:rw
-      - ${GOPATH}/src/vanekt/dental-api:/go/src/app:ro
+      - ${GOPATH}/src/vanekt/dental-api:/go/src/vanekt/dental-api:ro
     ports:
      - ${API_PORT}:4000
     environment:
